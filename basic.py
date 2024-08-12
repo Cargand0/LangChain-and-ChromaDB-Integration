@@ -11,4 +11,4 @@ vector_store = Chroma(
 
 import chromadb
 
-persistent
+persistent_client = chromadb.PersistentClient()
