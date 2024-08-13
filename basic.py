@@ -2,10 +2,8 @@ from langchain_community.embeddings import SentenceTransformerEmbeddings
 from langchain_chroma import Chroma
 from transformers import AutoTokenizer
 
-model_name="all-MiniLM-L6-v2"
-tokenizer = AutoTokenizer.from_pretrained(model_name, clean_up_tokenization_spaces=True)
-embeddings = SentenceTransformerEmbeddings(model_name=model_name)
 
+embeddings = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
 
 vector_store = Chroma(
     collection_name="example_collection",
@@ -13,7 +11,7 @@ vector_store = Chroma(
     persist_directory="chroma_langchain_db"
 )
 
-
+persistent_client = Chroma.PersistentClient()
 from uuid import uuid4
 
 from langchain_core.documents import Document
